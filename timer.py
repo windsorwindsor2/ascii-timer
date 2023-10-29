@@ -1,7 +1,7 @@
 """
 To do list:
 -handle case where user enters blank input for seconds.
-    This cas should act as zero seconds, instead of an error.
+    This case should act as zero seconds, instead of an error.
 -Add colors to timer (green, yellow for <1:00, red for <0:10
 -play a sound at end
 -verify timer runs for spcified time, not time + 1 second.
@@ -9,6 +9,8 @@ To do list:
     Use timestamps to measure how fr off the timer is
     Look at ways to make it more accurate.
 """
+
+#changed file to test git.
 
 from time import sleep
 from pyfiglet import figlet_format as ff
