@@ -3,17 +3,10 @@ To do list:
 -handle case where user enters blank input for seconds.
     This case should act as zero seconds, instead of an error.
 -Add colors to timer (green, yellow for <1:00, red for <0:10
--play a sound at end
--verify timer runs for spcified time, not time + 1 second.
 -Currenly each iteration runs for (1 second+code execution time)
     Use timestamps to measure how fr off the timer is
     Look at ways to make it more accurate.
 """
-
-#changed file to test git.
-
-#changed file again to test git branches.
-#working through git's official tutorial.
 
 from time import sleep
 from pyfiglet import figlet_format as ff
@@ -67,7 +60,7 @@ while not seconds_valid:
 textcolor ("cyan")
 
 while minutes >=0:
-    while seconds >= 0:
+    while seconds > 0:
         screen_clear()
         text= (f'{minutes}:{seconds:0>2}')
         formtext = ff(text,font='doh')
@@ -77,5 +70,8 @@ while minutes >=0:
     minutes -= 1
     seconds = 59
     
+screen_clear()
 
-print ("Time up!")
+formtext = ff("Time up!")
+
+print (formtext)

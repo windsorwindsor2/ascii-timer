@@ -1,5 +1,6 @@
 Include/
 Lib/
 Scripts/
-requirements.txt
+test/
+
 pyvenv.cfg
