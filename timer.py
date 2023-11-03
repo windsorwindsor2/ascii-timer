@@ -12,58 +12,36 @@ from time import sleep
 from pyfiglet import figlet_format as ff
 from os import name as osname
 from os import system
+from colorama import Fore, Back, Style
 
-#enables console to interpret ANSI escape codes.
+#enable system to clear screen.
 system('')
 
 def screen_clear():
-        if osname == "posix":
-            _ = system('clear')    
-        else:
-            _ = system('cls')
-
-def textcolor(color):
-    colorval = 0
-    match color:
-        case "red":
-            colorval = 31
-        case "green":
-            colorval = 32
-        case "yellow":
-            colorval = 33
-        case "blue":
-            colorval = 34
-        case "purple":
-            colorval = 35
-        case "cyan":
-            colorval = 36
-        case "white":
-            colorval = 37
-        case _:
-            raise ValueError('invalid color')
-    print (f"\033[1;{colorval}0;40m\n")
-        
-minutes = int(input('Enter number of minutes:  '))
-
+    if osname == "posix":
+        _ = system('clear')    
+    else:
+        _ = system('cls')
+       
 seconds_valid = False
 
-#enables console to interpret ANSI escape codes.
-
+minutes = int(input('Enter number of minutes:  '))
 
 while not seconds_valid:
     seconds = int(input('Enter number of seconds  '))
     if seconds < 60: seconds_valid=True
     else: print ("Please enter a value less than 60.")
 
-#print (f'Timer will be set for {minutes} : {seconds}')
-
-textcolor ("cyan")
+print (Fore.GREEN, Style.BRIGHT)
 
 while minutes >=0:
     while seconds > 0:
         screen_clear()
         text= (f'{minutes}:{seconds:0>2}')
         formtext = ff(text,font='doh')
+        
+        if minutes == 0 and seconds <=30 and seconds>10: print(Fore.YELLOW)
+        if minutes == 0 and seconds <= 10: print(Fore.RED) 
         print (formtext)
         sleep (1)
         seconds -=1
@@ -75,3 +53,5 @@ screen_clear()
 formtext = ff("Time up!")
 
 print (formtext)
+
+print (Style.RESET_ALL)
